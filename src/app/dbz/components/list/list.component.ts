@@ -9,18 +9,17 @@ import { Character } from '../../interfaces/character.interface';
 export class ListComponent {
 
   @Input()
-  public characterList: Character[] = [
-    {
-      name: 'Trunks',
-      power: 10
-    }
-  ];
+  public characterList: Character[] = [];
 
   @Output()
-  public onCharacterDeleted: EventEmitter<number> = new EventEmitter();
+  public onCharacterDeleted: EventEmitter<string> = new EventEmitter();
 
-  public onDeleteCharacter(index:number): void {
-    console.log(index);
-    this.onCharacterDeleted.emit(index);
+  public onDeleteCharacter(id:string): void {
+    if (!id) return;
+    this.onCharacterDeleted.emit(id);
   }
 }
+function uuid(): string {
+  throw new Error('Function not implemented.');
+}
+
